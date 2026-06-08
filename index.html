@@ -3,38 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://www.youtube.com/favicon.ico">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>YouTube</title>
 </head>
 <body>
+    <!-- Dark-mode Toggle -->
+    <input type="checkbox" id="dark-toggle">
+    <!-- Sidebar collapse toggle -->
+    <input type="checkbox" id="sidebar-toggle">
+    <!-- Nav bar -->
     <div class="navbar">
         <div class="logo">
-            <i class="material-icons">view_headline</i>
-            <img src="https://www.vectorlogo.zone/logos/youtube/youtube-ar21.svg" alt="">
+            <label for="sidebar-toggle" class="menu-btn" aria-label="Toggle sidebar">
+                <i class="material-icons">menu</i>
+            </label>
+            <a href="https://www.youtube.com/" class="logo-wrapper">
+            <img src="https://www.vectorlogo.zone/logos/youtube/youtube-ar21.svg" alt="YouTube">
+            <span class="country-tag">ZA</span>
+            </a>
         </div>
         <div class="searchbar">
-            <div class="search">
-            <input type="text" placeholder="Search">
-            <button><i class="material-icons">search</i></button>
-            </div>
-            <i class="material-icons">mic</i>
+            <form action="https://www.youtube.com/results" method="GET" class="search">
+                <input type="text" name="search_query" placeholder="Search">
+                <button type="submit"><i class="material-icons">search</i></button>
+            </form>
+            <a href="https://www.youtube.com/" class="nav-link" aria-label="Voice search">
+                <i class="material-icons">mic</i>
+            </a>
         </div>
         <div class="navigation-icons">
-            <div class="create-btn">
-               <span class="material-icons">add</span> 
-               <span>Create</span>
-            </div>
-           <!-- <i class="material-icons">add</i> -->
-           <i class="material-icons">notifications</i>
-           <i class="material-icons">account_circle</i>
+            <a href="https://www.youtube.com/upload" class="create-btn">
+                <span class="material-icons">add</span>
+                <span>Create</span>
+            </a>
+            <a href="https://www.youtube.com/feed/notifications" class="nav-link" aria-label="Notifications">
+                <i class="material-icons">notifications</i>
+            </a>
+            <a href="https://www.youtube.com/account" class="nav-link" aria-label="Account">
+                <i class="material-icons">account_circle</i>
+            </a>
+            <label for="dark-toggle" class="dark-mode-btn">
+                <i class="material-icons">dark_mode</i>
+            </label>
         </div>
     </div>
+
+    <!-- Main body -->
     <div class="main-body">
-        <div class="categories"></div>
-        <div class="videos"></div>
+
+        <!-- ✅ SIDEBAR -->
+        <div class="categories">
+            <div class="category-section">
+                <a href="https://www.youtube.com/" class="category active">
+                    <i class="material-icons">home</i>
+                    Home
+                </a>
+                <a href="https://www.youtube.com/shorts" class="category">
+                    <img src="https://img.icons8.com/?size=100&id=2X8KoO8YIB6T&format=png&color=000000" alt="">
+                    Shorts
+                </a>
+                <a href="https://www.youtube.com/feed/subscriptions" class="category">
+                    <i class="material-icons">subscriptions</i>
+                    Subscription
+                </a>
+            </div>
+
+            <div class="category-section">
+                <a href="https://www.youtube.com/feed/you" class="user-category you-section">
+                <span>You</span>
+                <i class="material-icons chevron">chevron_right</i>
+                </a>
+                <a href="https://www.youtube.com/feed/history" class="user-category">
+                    <i class="material-icons">history</i>
+                    History
+                </a>
+                <a href="https://www.youtube.com/feed/playlists" class="user-category">
+                    <i class="material-icons">queue_music</i>
+                    <span>Playlists</span>
+                </a>
+                <a href="https://www.youtube.com/playlist?list=WL" class="user-category">
+                    <i class="material-icons">watch_later</i>
+                    <span>Watch Later</span>
+                </a>
+                <a href="https://www.youtube.com/playlist?list=LL" class="user-category">
+                    <i class="material-icons">thumb_up</i>
+                    <span>Liked Videos</span>
+                </a>
+                <a href="https://www.youtube.com/feed/downloads" class="user-category">
+                    <i class="material-icons">download</i>
+                    <span>Downloads</span>
+                </a>
+            </div>
+
+            <div class="category-section">
+                <span class="explore-section section-title">Explore</span>
+                <a href="https://www.youtube.com/channel/UC-9-kyTW8ZkZDCOJ4rsjxnA" class="explore-section">
+                    <i class="material-icons">music_note</i>
+                    Music
+                </a>
+                <a href="https://www.youtube.com/gaming" class="explore-section">
+                    <i class="material-icons">sports_esports</i>
+                    Gaming
+                </a>
+                <a href="https://www.youtube.com/news" class="explore-section">
+                    <i class="material-icons">article</i>
+                    News
+                </a>
+
+                <!-- Show More toggle -->
+                <input type="checkbox" id="explore-toggle" style="display:none">
+                <label for="explore-toggle" class="show-more-btn">
+                    <i class="material-icons">expand_more</i> Show more
+                </label>
+
+                <a href="https://www.youtube.com/sports" class="explore-section extra-item">
+                    <i class="material-icons">emoji_events</i>
+                    Sports
+                </a>
+                <a href="https://www.youtube.com/podcasts" class="explore-section extra-item">
+                    <i class="material-icons">podcasts</i>
+                    Podcasts
+                </a>
+
+                <label for="explore-toggle" class="show-less-btn">
+                    <i class="material-icons">expand_less</i> Show less
+                </label>
+            </div>
+
+            <div class="more-section">
+                <span class="section-title more"><p>More from YouTube</p></span>
+                <a href="https://www.youtube.com/premium" class="more-item">
+                    <img src="https://cdn.simpleicons.org/youtube/ff0000" width="24" height="24" alt="">
+                    YouTube Premium
+                </a>
+                <a href="https://music.youtube.com/" class="more-item">
+                    <img src="https://img.icons8.com/?size=100&id=V1cbDThDpbRc&format=png&color=000000" width="24" height="24" alt="">
+                    YouTube Music
+                </a>
+                <a href="https://www.youtubekids.com/" class="more-item">
+                    <img src="https://cdn.simpleicons.org/youtube/ff0000" width="24" height="24" alt="">
+                    YouTube Kids
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="https://www.youtube.com/reporthistory" class="footer-item">
+                    <i class="material-icons">flag</i> Report History
+                </a>
+                <div class="footer-links">
+                    <a href="https://www.youtube.com/about/">About</a>
+                    <a href="https://www.youtube.com/about/press/">Press</a>
+                    <a href="https://www.youtube.com/about/copyright/">Copyright</a>
+                    <a href="https://www.youtube.com/t/contact_us/">Contact us</a>
+                    <a href="https://www.youtube.com/creators/">Creators</a>
+                    <a href="https://www.youtube.com/ads/">Advertise</a>
+                    <a href="https://developers.google.com/youtube">Developers</a>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.youtube.com/t/terms">Terms</a>
+                    <a href="https://www.youtube.com/t/privacy">Privacy</a>
+                    <a href="https://www.youtube.com/about/policies/">Policy & Safety</a>
+                    <a href="https://www.youtube.com/howyoutubeworks/">How YouTube works</a>
+                    <a href="https://www.youtube.com/new">Test new features</a>
+                </div>
+                <p class="footer-copyright">© 2026 Google LLC</p>
+            </div>
+        </div>
+        <!-- END SIDEBAR -->
+        <!--MAIN CONTENT-->
+        <div class="videos">
+            <div class="chip-bar">
+                <a href="https://www.youtube.com/" class="chip active">All</a>
+                <a href="https://www.youtube.com/gaming" class="chip">Gaming</a>
+                <a href="https://www.youtube.com/channel/UC-9-kyTW8ZkZDCOJ4rsjxnA" class="chip">Music</a>
+                <a href="https://www.youtube.com/results?search_query=coding" class="chip">Coding</a>
+                <a href="https://www.youtube.com/results?search_query=comedy" class="chip">Comedy</a>
+                <a href="https://www.youtube.com/news" class="chip">News</a>
+                <a href="https://www.youtube.com/sports" class="chip">Sports</a>
+                <a href="https://www.youtube.com/results?search_query=food" class="chip">Food</a>
+                <a href="https://www.youtube.com/results?search_query=science+and+technology" class="chip">Science & Tech</a>
+                <a href="https://www.youtube.com/results?search_query=travel" class="chip">Travel</a>
+                <a href="https://www.youtube.com/results?search_query=fashion" class="chip">Fashion</a>
+                <a href="https://www.youtube.com/results?search_query=fitness" class="chip">Fitness</a>
+            </div>
+            <div class="video-grid">
+                <!-- Card 1 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v1/480/270" alt="Video thumbnail">
+                        <span class="duration">12:34</span>
+                    </div>
+                    <div class="details">
+                        <div class="profile">
+                            <i class="material-icons">account_circle</i>
+                        </div>
+                        <div class="video-info">
+                            <p class="video-title">How to Build a Website from Scratch</p>
+                            <p class="channel-name">CodeWithPhumla</p>
+                            <p class="video-stats">1.2M views · 3 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                 <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v2/480/270" alt="thumbnail">
+                        <span class="duration">8:22</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch2/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Amapiano Mix 2025 ft Kabza De Small & DJ Maphorisa</p>
+                            <p class="channel-name">SA Music Hub</p>
+                            <p class="video-stats">890K views · 1 week ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v3/480/270" alt="thumbnail">
+                        <span class="duration">26:09</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch3/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Soft Life, Hard Emotions — My Story #vlog</p>
+                            <p class="channel-name">Boujee Space</p>
+                            <p class="video-stats">228K views · 9 days ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v4/480/270" alt="thumbnail">
+                        <span class="duration">44:50</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch4/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Top 10 Shocking Moments Love & Hip Hop Atlanta Season 13</p>
+                            <p class="channel-name">Love & Hip Hop ✔</p>
+                            <p class="video-stats">566K views · 2 weeks ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v5/480/270">
+                        <span class="duration">13:39</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch5/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">How to Use XLOOKUP in Microsoft Excel (Full Guide)</p>
+                            <p class="channel-name">Kevin Stratvert ✔</p>
+                            <p class="video-stats">224K views · 6 years ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v6/480/270" alt="thumbnail">
+                        <span class="duration">1:35:33</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch6/40/40" alt="channel">.
+                        <div class="video-info">
+                            <p class="video-title">Chandler Moore & Naomi Raine — Elevation Worship Powerful Gospel</p>
+                            <p class="channel-name">Heaven's Worship Music</p>
+                            <p class="video-stats">1.4M views · 3 months ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v7/480/270" alt="thumbnail">
+                        <span class="duration">18:47</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch7/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">React in 2025 — New Features Every Developer Should Know</p>
+                            <p class="channel-name">Traversy Media ✔</p>
+                            <p class="video-stats">980K views · 5 days ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>   
+                <!-- Card 8 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v8/480/270" alt="thumbnail">
+                        <span class="duration">21:05</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch8/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Bafana Bafana AFCON 2025 Highlights — We're Back!</p>
+                            <p class="channel-name">SportsPulse ZA</p>
+                            <p class="video-stats">3.8M views · 1 day ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v9/480/270" alt="thumbnail">
+                        <span class="duration">31:14</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch9/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">I Tried Cooking Every South African Street Food in One Day 🔥</p>
+                            <p class="channel-name">TastebudsZA</p>
+                            <p class="video-stats">450K views · 2 weeks ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 10 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v10/480/270" alt="thumbnail">
+                        <span class="duration">9:58</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch10/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">GTA 6 Gameplay Leaked — Everything You Need to See</p>
+                            <p class="channel-name">GamingWithNdaba</p>
+                            <p class="video-stats">5.2M views · 6 hours ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 11 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v11/480/270" alt="thumbnail">
+                        <span class="duration">15:20</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch11/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Thrift Shopping in Johannesburg — R500 Challenge 👕</p>
+                            <p class="channel-name">StyleNawe</p>
+                            <p class="video-stats">210K views · 2 weeks ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+                <!-- Card 12 -->
+                <div class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/v12/480/270" alt="thumbnail">
+                        <span class="duration">7:44</span>
+                    </div>
+                    <div class="details">
+                        <img class="channel-avatar" src="https://picsum.photos/seed/ch12/40/40" alt="channel">
+                        <div class="video-info">
+                            <p class="video-title">Load Shedding Survival Guide 2025 — Real Talk 💡</p>
+                            <p class="channel-name">TechNdaba</p>
+                            <p class="video-stats">560K views · 1 month ago</p>
+                        </div>
+                        <span class="more-icon">⋮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END MAIN CONTENT -->
     </div>
-    
-    
+    <!-- END main-body -->
+
 </body>
 </html>
